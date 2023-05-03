@@ -7,6 +7,7 @@ class News {
   final String content;
   final String postedTime;
   final dynamic author;
+  
   News(
     this.index,
     this.title,

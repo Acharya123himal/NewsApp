@@ -15,7 +15,6 @@ class ListNews extends StatefulWidget {
 
 class _ListNewsState extends State<ListNews> {
   bool gridView = true;
-
   @override
   Widget build(BuildContext context) {
     return Column(

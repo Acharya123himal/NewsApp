@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
@@ -28,20 +26,30 @@ class _ReadNewsState extends State<ReadNews> {
       listenScroll();
     });
   }
+  @override
+void dispose() {
+  _controller.dispose();
+  super.dispose();
+}
 
   void listenScroll() {
-    if (_controller.position.atEdge) {
+    if (_controller.keepScrollOffset) {
+      if (_controller.position.pixels <-200) {
+        Navigator.pop(context);
+        dispose();
+      }
       if (_controller.position.pixels == 0) {
         setState(() {
           floatButtonVisibility = false;
         });
-      } else {
+      }else {
         setState(() {
           floatButtonVisibility = true;
         });
       }
     }
   }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -142,7 +150,7 @@ class _ReadNewsState extends State<ReadNews> {
             backgroundColor: Colors.grey,
             onPressed: () {
               _controller.animateTo(
-                0,
+                1,
                 duration: const Duration(seconds: 2),
                 curve: Curves.easeOutBack,
               );

@@ -34,8 +34,11 @@ class GridTileView extends StatelessWidget {
                     tag: 'hero$postIndex',
                     child: Image.network(
                       list[index].image,
+                      width: MediaQuery.of(context).size.width/2,
+                      height: MediaQuery.of(context).size.width/4.5,
                     ),
                   ),
+                  const SizedBox(height: 5),
                   Text(
                     parse((list[index].title).toString())
                         .documentElement!
@@ -43,7 +46,7 @@ class GridTileView extends StatelessWidget {
                     textAlign: TextAlign.justify,
                     style: GoogleFonts.getFont(
                       'Copse',
-                      fontSize: 18,
+                      fontSize: 14,
                       color: Colors.white,
                     ),
                   ),
