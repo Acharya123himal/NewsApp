@@ -9,8 +9,8 @@ class NetworkHelper {
     var response = await http.get(Uri.parse(url));
     var jsonData = json.decode(response.body);
 
-    List<News> _news = [];
-    List<Comment> _comment = [];
+    List<News> news0 = [];
+    List<Comment> comment0 = [];
     if (url.contains("/v2/posts/")) {
       
       for (var u in jsonData) {
@@ -24,9 +24,9 @@ class NetworkHelper {
           u["date_gmt"],
           u["yoast_head_json"]["author"],
         );
-        _news.add(news);
+        news0.add(news);
       }
-      return _news;
+      return news0;
     } else if (url.contains("/v2/comments")) {
       for (var u in jsonData) {
         Comment comment = Comment(
@@ -34,11 +34,11 @@ class NetworkHelper {
           u["author_name"],
           u["content"]["rendered"],
         );
-        _comment.add(comment);
+        comment0.add(comment);
       }
-      return _comment;
+      return comment0;
     }
-    debugPrint("${_news.length}");
-    return _news;
+    debugPrint("${news0.length}");
+    return news0;
   }
 }

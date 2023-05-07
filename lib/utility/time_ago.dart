@@ -4,11 +4,11 @@ class TimeAgo {
   final dynamic time;
   TimeAgo(this.time);
   get() {
-    var _convertedTimestamp = DateTime.parse(time);
-    dynamic _dateTime = GetTimeAgoModified.parse(
-      _convertedTimestamp,
+    var convertedTimestamp = DateTime.parse(time);
+    dynamic dateTime = GetTimeAgoModified.parse(
+      convertedTimestamp,
       pattern: 'dd mm yy',
     );
-    return _dateTime;
+    return dateTime;
   }
 }

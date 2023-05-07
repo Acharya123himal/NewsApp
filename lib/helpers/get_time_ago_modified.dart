@@ -4,14 +4,14 @@ import 'package:intl/intl.dart';
 class GetTimeAgoModified {
   
   static String parse(DateTime dateTime, {String? pattern}) {
-    final _message = EnglishMessages();
-    final _pattern = pattern ?? "dd MMM, yyyy hh:mm aa";
-    final date = DateFormat(_pattern).format(dateTime);
+    final message = EnglishMessages();
+    final pattern0 = pattern ?? "dd MMM, yyyy hh:mm aa";
+    final date = DateFormat(pattern0).format(dateTime);
     var elapsed =
         DateTime.now().millisecondsSinceEpoch - dateTime.millisecondsSinceEpoch;
 
-    var _prefix = _message.prefixAgo();
-    var _suffix = _message.suffixAgo();
+    var prefix = message.prefixAgo();
+    var suffix = message.suffixAgo();
 
     ///
     /// Getting [seconds], [minutes], [hours], [days] from provided [dateTime]
@@ -26,40 +26,40 @@ class GetTimeAgoModified {
     String msg;
     String result;
     if (seconds < 59) {
-      msg = _message.secsAgo(seconds.round());
-      result = [_prefix, msg, _suffix]
+      msg = message.secsAgo(seconds.round());
+      result = [prefix, msg, suffix]
           .where((res) => res.isNotEmpty)
-          .join(_message.wordSeparator());
+          .join(message.wordSeparator());
     } else if (seconds < 119) {
-      msg = _message.minAgo(minutes.round());
-      result = [_prefix, msg, _suffix]
+      msg = message.minAgo(minutes.round());
+      result = [prefix, msg, suffix]
           .where((res) => res.isNotEmpty)
-          .join(_message.wordSeparator());
+          .join(message.wordSeparator());
     } else if (minutes < 59) {
-      msg = _message.minsAgo(minutes.round());
-      result = [_prefix, msg, _suffix]
+      msg = message.minsAgo(minutes.round());
+      result = [prefix, msg, suffix]
           .where((res) => res.isNotEmpty)
-          .join(_message.wordSeparator());
+          .join(message.wordSeparator());
     } else if (minutes < 119) {
-      msg = _message.hourAgo(hours.round());
-      result = [_prefix, msg, _suffix]
+      msg = message.hourAgo(hours.round());
+      result = [prefix, msg, suffix]
           .where((res) => res.isNotEmpty)
-          .join(_message.wordSeparator());
+          .join(message.wordSeparator());
     } else if (hours < 24) {
-      msg = _message.hoursAgo(hours.round());
-      result = [_prefix, msg, _suffix]
+      msg = message.hoursAgo(hours.round());
+      result = [prefix, msg, suffix]
           .where((res) => res.isNotEmpty)
-          .join(_message.wordSeparator());
+          .join(message.wordSeparator());
     } else if (hours < 48) {
-      msg = _message.dayAgo(hours.round());
-      result = [_prefix, msg, _suffix]
+      msg = message.dayAgo(hours.round());
+      result = [prefix, msg, suffix]
           .where((res) => res.isNotEmpty)
-          .join(_message.wordSeparator());
+          .join(message.wordSeparator());
     } else if (days < 30) {
-      msg = _message.daysAgo(days.round());
-      result = [_prefix, msg, _suffix]
+      msg = message.daysAgo(days.round());
+      result = [prefix, msg, suffix]
           .where((res) => res.isNotEmpty)
-          .join(_message.wordSeparator());
+          .join(message.wordSeparator());
     } else {
       msg = date;
       result = date;

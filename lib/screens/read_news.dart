@@ -38,7 +38,7 @@ void dispose() {
         Navigator.pop(context);
         dispose();
       }
-      if (_controller.position.pixels == 0) {
+      if (_controller.position.pixels < 50) {
         setState(() {
           floatButtonVisibility = false;
         });

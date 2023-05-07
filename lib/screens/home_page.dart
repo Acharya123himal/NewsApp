@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: SafeArea(
         child: FutureBuilder(
-          future: _networkHelper.getData(mainurl + "?per_page=10&?_embed"),
+          future: _networkHelper.getData("$mainurl?per_page=10&?_embed"),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.data == null) {
               return const Center(
